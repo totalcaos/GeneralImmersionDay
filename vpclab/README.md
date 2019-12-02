@@ -21,7 +21,7 @@ During the VPC wizard set up, you will need to specify an **Elastic IP Address (
 
 To create one, go to **Elastic IPs** in the sidebar, and press **Allocate new address, Allocate, Close**.
 
-![EIP](eip.png)
+![EIP](EIP.png)
 
 Now click on **VPC Dashboard** in the top left corner to go back to the main VPC page. 
 Click on **Launch VPC Wizard** to start the VPC Wizard and select **‘VPC with Public and Private Subnets’**. 
