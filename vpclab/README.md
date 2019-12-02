@@ -84,18 +84,18 @@ We have now gone through the bread and butter of AWS networking. You should now 
 
 
 <Details>
-<Summary>Additional Information</Summary>
+<Summary><b>Additional VPC Resources</b></Summary>
 
-* VPC Introduction: https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/
+* **VPC Introduction:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/
 
-* VPC Subnets: https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html]
+* **VPC Subnets:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html
 
-* VPC wizard configuration: https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Scenario2.html 
+* **VPC wizard configuration:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Scenario2.html 
 
-* NAT Gateways: https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html 
+* **NAT Gateways:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html 
 
-* Elastic IPs: https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-eips.html 
+* **Elastic IPs:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-eips.html 
 
-* Security Groups and NACLs: https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Security.html
+* **Security Groups and NACLs:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Security.html
 
 </Details>
