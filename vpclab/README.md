@@ -57,3 +57,27 @@ Click on the **Routes** tab.
 In the **Routes** tab, look at the **Target** column. You’ll see one **local route** which every route table has. This ensures that resources within the VPC can talk to each other.
 
 You will also see a route to the **NAT gateway** that the wizard created. Remember that a NAT gateway gives internet access to resources which are not publicly accessible. Because the resources in this subnet are not publicly accessible, this is considered a **private subnet**. 
+
+Now let’s find out what makes a subnet public. First, get rid of the filter on this view. To do this, **click the X in the search bar**. You are now looking at all of the route tables in this region. Your dashboard should look something like the screenshot below. 
+
+Select the other route table in your VPC (check **VPC** column for name) which is not the main route table (check **Main** column for **No**). In the **Routes** tab, you’ll see a route to an **Internet Gateway (IGW)**. IGWs are another managed and scalable service like the NAT Gateway except that it allows access from the internet to your resources in the VPC, making your resources publicly accessible. 
+
+![VPC Dashboard](vpc6.png)
+
+There is a reason why this route table is not the main route table. 
+
+**_It is best practice for your VPC’s main route table to not have a route to an IGW so that subnets are private by default and only public if specified._**
+
+Go to the **Subnet Associations** tab and confirm that it is the **Public subnet** which is associated with this route table. Click on the **Public subnet link**.
+
+Look at the **Description** tab. You’ll notice a **Network Access Control List (Network ACL)** link. NACLs are virtual stateless firewalls at the subnet layer. This wizard used the **default NACL** (created automatically with the VPC) for both subnets. Similar to the main route table, the default NACL is implicitly associated with all subnets in a VPC unless another NACL is directly associated with that subnet. 
+
+Go to the **Network ACL** tab to look at the default NACL rules. Rules are evaluated in order from lowest to highest. If the traffic doesn’t match any rules, the * rule is applied, and the traffic is denied. Default NACLs allow all inbound and outbound traffic, as shown below, unless customized.
+
+![VPC Dashboard](vpc7.png)
+
+Allowing all traffic in and out of your subnets is not a good security posture. However, it is possible to achieve good security with this default NACL by leveraging **Security Groups** as well. 
+
+Security Groups are virtual stateful firewalls at the resource (EC2 instance) level. It is best practice to implement necessary firewall rules with Security Groups first and only adding rules to NACLs as necessary. For instance, you can explicitly deny traffic from specific IPs with NACLs but not with Security Groups. We will explore Security Groups more in the next section.
+
+We have now gone through the bread and butter of AWS networking. You should now understand how routing works in a VPC, what makes a subnet public or private, and how to secure your resources at the subnet and resource levels.
