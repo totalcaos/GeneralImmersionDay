@@ -81,3 +81,21 @@ Allowing all traffic in and out of your subnets is not a good security posture. 
 Security Groups are virtual stateful firewalls at the resource (EC2 instance) level. It is best practice to implement necessary firewall rules with Security Groups first and only adding rules to NACLs as necessary. For instance, you can explicitly deny traffic from specific IPs with NACLs but not with Security Groups. We will explore Security Groups more in the next section.
 
 We have now gone through the bread and butter of AWS networking. You should now understand how routing works in a VPC, what makes a subnet public or private, and how to secure your resources at the subnet and resource levels.
+
+
+<Details>
+<Summary>Additional Information</Summary>
+
+* VPC Introduction: https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/
+
+* VPC Subnets: https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html]
+
+* VPC wizard configuration: https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Scenario2.html 
+
+* NAT Gateways: https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html 
+
+* Elastic IPs: https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-eips.html 
+
+* Security Groups and NACLs: https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Security.html
+
+</Details>
