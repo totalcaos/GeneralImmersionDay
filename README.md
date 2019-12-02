@@ -18,7 +18,8 @@ In this introductory session, through a mix of classroom training and hands-on l
 1. ELB Immersion Lab
 2. RDS Immersion Lab
 
-<Details><Summary>Additional Content</Summary>
+<Details>
+<Summary>Additional Content</Summary>
  
 ### Resources
 To Do
