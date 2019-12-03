@@ -1,13 +1,13 @@
 # VPC Hands On Lab
 ### Getting Started with Virtual Private Cloud
 
-## Virtual Private Cloud (VPC) Overview
+## **Virtual Private Cloud (VPC) Overview**
 
 Amazon Virtual Private Cloud (Amazon VPC) lets you provision a logically isolated section of the AWS Cloud where you can launch AWS resources in a virtual network that you define. You have complete control over your virtual networking environment, including selection of your own IP address range, creation of subnets, and configuration of route tables and network gateways. You can use both IPv4 and IPv6 in your VPC for secure and easy access to resources and applications.
 
 In this lab, you will learn how to set up a VPC with public and private subnets. You will also learn about AWS networking concepts such as Elastic IPs, NAT Gateways, and Flow Logs.
 
-## Navigate to the VPC Dashboard
+## **Navigate to the VPC Dashboard**
 
 To get started, let’s take a look at the VPC Dashboard.  In every region, a **default VPC** has already been created for you. So, even if you haven’t created anything in your account yet, you will see some VPC resources already there.
 
@@ -36,7 +36,7 @@ This Elastic IP will be used to create a **Network Address Translation (NAT) gat
 
 Click on **Create VPC**. This step will take a couple minutes. Once your VPC has been created, click **OK**. 
 
-## What the VPC Wizard Created
+## **What the VPC Wizard Created**
 Let’s walk through the VPC Console and explain each component that the wizard created. 
 
 From the last step, you should now be on the **Your VPCs** dashboard looking at all of your VPCs in this region. Select the VPC that you just created, and look at the **Summary** tab. If you can’t see everything in the pane, you can pull the pane up by dragging on the pane’s top line. 
@@ -82,7 +82,62 @@ Security Groups are virtual stateful firewalls at the resource (EC2 instance) le
 
 We have now gone through the bread and butter of AWS networking. You should now understand how routing works in a VPC, what makes a subnet public or private, and how to secure your resources at the subnet and resource levels.
 
+## **Additional Resources**
+
 <Details>
+
+<Summary><b>Challenge Tasks</b></Summary>
+
+### **Use CloudFormation to deploy a VPC**
+
+#### **Creating the template**
+
+Create a CloudFormation template using the skeleton below and save it as **VPC.yml**
+
+```YAML
+AWSTemplateFormatVersion: 2010-09-09
+# This CloudFormation template deploys a basic VPC / Network. 
+Resources:
+  # First, a VPC:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 
+      ...
+      ...
+      Tags:
+      - Key: Name
+        Value:  !Join ['', [!Ref "AWS::StackName", "-VPC" ]]
+
+```
+
+**Indentation:** "Resources:" should have no spaces preceding it.  "VPC:" should be indented two spaces, "Type" and "Properties" should be indented two more spaces, etc.  **DO NOT** use tabs,
+
+**Help resources:** https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpc.html#aws-resource-ec2-vpc-properties
+
+#### **Running the template**
+
+##### 1. From the console
+
+From a browser open the [AWS Management Console](https://ap-southeast-2.console.aws.amazon.com/cloudformation/home?region=ap-southeast-2).  Sign in, select any region.  Find CloudFormation in the menus, use the search feature if needed.  Once in, click "Create Stack".  Select the option to upload your own template, and hit next.
+
+##### **2. CLI**
+
+```bash
+aws cloudformation create-stack --stack-name MyNetwork --template-body file://vpc.yml
+
+```
+
+```--stack-name``` Can be anything you like <br>
+```--template-body``` The file you have been working on (VPC.yml)
+
+</Details>
+
+<br>
+
+<Details>
+<Summary><b>VPC References</b></Summary>
+=======
 <Summary><b>Additional VPC Resources</b></Summary>
 
 **1. VPC Introduction:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/
