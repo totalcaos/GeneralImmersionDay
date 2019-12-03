@@ -85,9 +85,48 @@ We have now gone through the bread and butter of AWS networking. You should now 
 <Details>
 <Summary><b>Challenge Tasks</b></Summary>
 
-### Use CloudFormation to deploy a VPC
+### **Use CloudFormation to deploy a VPC**
 
+#### **Creating the template**
 
+Create a CloudFormation template using the skeleton below and save it as **VPC.yml**
+
+```YAML
+AWSTemplateFormatVersion: 2010-09-09
+# This CloudFormation template deploys a basic VPC / Network. 
+Resources:
+  # First, a VPC:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 
+      ...
+      ...
+      Tags:
+      - Key: Name
+        Value:  !Join ['', [!Ref "AWS::StackName", "-VPC" ]]
+
+```
+
+**Indentation:** "Resources:" should have no spaces preceding it.  "VPC:" should be indented two spaces, "Type" and "Properties" should be indented two more spaces, etc.  **DO NOT** use tabs,
+
+**Help resources:** https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpc.html#aws-resource-ec2-vpc-properties
+
+#### **Running the template**
+
+##### 1. From the console
+
+From a browser open the [AWS Management Console](https://ap-southeast-2.console.aws.amazon.com/cloudformation/home?region=ap-southeast-2).  Sign in, select any region.  Find CloudFormation in the menus, use the search feature if needed.  Once in, click "Create Stack".  Select the option to upload your own template, and hit next.
+
+##### **2. CLI**
+
+```bash
+aws cloudformation create-stack --stack-name MyNetwork --template-body file://vpc.yml
+
+```
+
+```--stack-name``` Can be anything you like <br>
+```--template-body``` The file you have been working on (VPC.yml)
 
 </Details>
 
