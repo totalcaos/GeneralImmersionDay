@@ -85,6 +85,7 @@ We have now gone through the bread and butter of AWS networking. You should now 
 ## **Additional Resources**
 
 <Details>
+
 <Summary><b>Challenge Tasks</b></Summary>
 
 ### **Use CloudFormation to deploy a VPC**
@@ -136,6 +137,8 @@ aws cloudformation create-stack --stack-name MyNetwork --template-body file://vp
 
 <Details>
 <Summary><b>VPC References</b></Summary>
+=======
+<Summary><b>Additional VPC Resources</b></Summary>
 
 **1. VPC Introduction:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/
 
