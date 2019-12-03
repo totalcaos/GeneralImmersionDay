@@ -100,3 +100,5 @@ Open a new browser tab and browse the Web Server by entering the EC2 instance’
 ![EC2-13](ec2-13.PNG)
 
 ### **Test Access to your instance**
+
+Now that the EC2 instance is running, lets test our access to the instance in the **[next section.](TestingAccess.md)**
