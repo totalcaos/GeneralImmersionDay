@@ -23,8 +23,8 @@ To create one, go to **Elastic IPs** in the sidebar, and press **Allocate new ad
 
 ![EIP](EIP.png)
 
-Now click on **VPC Dashboard** in the top left corner to go back to the main VPC page. 
-Click on **Launch VPC Wizard** to start the VPC Wizard and select **‘VPC with Public and Private Subnets’**. 
+Now click on **VPC Dashboard** in the top left corner to go back to the main VPC page.
+Click on **Launch VPC Wizard** to start the VPC Wizard and select **‘VPC with Public and Private Subnets’**.
 
 ![VPC Dashboard](vpc2.png)
 
@@ -34,12 +34,12 @@ This option will create a VPC with a /16 CIDR block and two subnets with /24 CID
 
 This Elastic IP will be used to create a **Network Address Translation (NAT) gateway** for the private subnet. NAT gateway is a managed, highly scalable NAT service that gives your resources access to the internet but doesn’t allow anyone on the internet access to your resources. NAT is helpful for when a resource needs to pull down updates from the internet but should not be publicly accessible.
 
-Click on **Create VPC**. This step will take a couple minutes. Once your VPC has been created, click **OK**. 
+Click on **Create VPC**. This step will take a couple minutes. Once your VPC has been created, click **OK**.
 
 ## **What the VPC Wizard Created**
-Let’s walk through the VPC Console and explain each component that the wizard created. 
+Let’s walk through the VPC Console and explain each component that the wizard created.
 
-From the last step, you should now be on the **Your VPCs** dashboard looking at all of your VPCs in this region. Select the VPC that you just created, and look at the **Summary** tab. If you can’t see everything in the pane, you can pull the pane up by dragging on the pane’s top line. 
+From the last step, you should now be on the **Your VPCs** dashboard looking at all of your VPCs in this region. Select the VPC that you just created, and look at the **Summary** tab. If you can’t see everything in the pane, you can pull the pane up by dragging on the pane’s top line.
 
 In the **Summary** tab in the left-hand column, you can see the **Main Route Table** for your VPC. Any subnets in the VPC that do not have a route table directly associated with it will use this route table by default. To explore this further, click on the **Route table link**.
 
@@ -49,38 +49,40 @@ You are now in the **Route Tables** dashboard, filtered on the main route table 
 
 ![VPC Dashboard](vpc5.png)
 
-You can see that there are no **explicit subnet associations** on this route table. However, since this is the main route table for the VPC, there is one subnet implicitly associated. It’s the **Private subnet** of the VPC. 
+You can see that there are no **explicit subnet associations** on this route table. However, since this is the main route table for the VPC, there is one subnet implicitly associated. It’s the **Private subnet** of the VPC.
 
-What makes a subnet public or private? We can find out by looking at the routes in this table. 
-Click on the **Routes** tab. 
+What makes a subnet public or private? We can find out by looking at the routes in this table.
+Click on the **Routes** tab.
 
 In the **Routes** tab, look at the **Target** column. You’ll see one **local route** which every route table has. This ensures that resources within the VPC can talk to each other.
 
-You will also see a route to the **NAT gateway** that the wizard created. Remember that a NAT gateway gives internet access to resources which are not publicly accessible. Because the resources in this subnet are not publicly accessible, this is considered a **private subnet**. 
+You will also see a route to the **NAT gateway** that the wizard created. Remember that a NAT gateway gives internet access to resources which are not publicly accessible. Because the resources in this subnet are not publicly accessible, this is considered a **private subnet**.
 
-Now let’s find out what makes a subnet public. First, get rid of the filter on this view. To do this, **click the X in the search bar**. You are now looking at all of the route tables in this region. Your dashboard should look something like the screenshot below. 
+Now let’s find out what makes a subnet public. First, get rid of the filter on this view. To do this, **click the X in the search bar**. You are now looking at all of the route tables in this region. Your dashboard should look something like the screenshot below.
 
-Select the other route table in your VPC (check **VPC** column for name) which is not the main route table (check **Main** column for **No**). In the **Routes** tab, you’ll see a route to an **Internet Gateway (IGW)**. IGWs are another managed and scalable service like the NAT Gateway except that it allows access from the internet to your resources in the VPC, making your resources publicly accessible. 
+Select the other route table in your VPC (check **VPC** column for name) which is not the main route table (check **Main** column for **No**). In the **Routes** tab, you’ll see a route to an **Internet Gateway (IGW)**. IGWs are another managed and scalable service like the NAT Gateway except that it allows access from the internet to your resources in the VPC, making your resources publicly accessible.
 
 ![VPC Dashboard](vpc6.png)
 
-There is a reason why this route table is not the main route table. 
+There is a reason why this route table is not the main route table.
 
 **_It is best practice for your VPC’s main route table to not have a route to an IGW so that subnets are private by default and only public if specified._**
 
 Go to the **Subnet Associations** tab and confirm that it is the **Public subnet** which is associated with this route table. Click on the **Public subnet link**.
 
-Look at the **Description** tab. You’ll notice a **Network Access Control List (Network ACL)** link. NACLs are virtual stateless firewalls at the subnet layer. This wizard used the **default NACL** (created automatically with the VPC) for both subnets. Similar to the main route table, the default NACL is implicitly associated with all subnets in a VPC unless another NACL is directly associated with that subnet. 
+Look at the **Description** tab. You’ll notice a **Network Access Control List (Network ACL)** link. NACLs are virtual stateless firewalls at the subnet layer. This wizard used the **default NACL** (created automatically with the VPC) for both subnets. Similar to the main route table, the default NACL is implicitly associated with all subnets in a VPC unless another NACL is directly associated with that subnet.
 
 Go to the **Network ACL** tab to look at the default NACL rules. Rules are evaluated in order from lowest to highest. If the traffic doesn’t match any rules, the * rule is applied, and the traffic is denied. Default NACLs allow all inbound and outbound traffic, as shown below, unless customized.
 
 ![VPC Dashboard](vpc7.png)
 
-Allowing all traffic in and out of your subnets is not a good security posture. However, it is possible to achieve good security with this default NACL by leveraging **Security Groups** as well. 
+Allowing all traffic in and out of your subnets is not a good security posture. However, it is possible to achieve good security with this default NACL by leveraging **Security Groups** as well.
 
 Security Groups are virtual stateful firewalls at the resource (EC2 instance) level. It is best practice to implement necessary firewall rules with Security Groups first and only adding rules to NACLs as necessary. For instance, you can explicitly deny traffic from specific IPs with NACLs but not with Security Groups. We will explore Security Groups more in the next section.
 
 We have now gone through the bread and butter of AWS networking. You should now understand how routing works in a VPC, what makes a subnet public or private, and how to secure your resources at the subnet and resource levels.
+
+In the **[next module](../ec2lab/README.md)** we will deploy web servers in the public subnet and private subnets and test our ability to access them
 
 ## **Additional Resources**
 
@@ -96,13 +98,13 @@ Create a CloudFormation template using the skeleton below and save it as **VPC.y
 
 ```YAML
 AWSTemplateFormatVersion: 2010-09-09
-# This CloudFormation template deploys a basic VPC / Network. 
+# This CloudFormation template deploys a basic VPC / Network.
 Resources:
   # First, a VPC:
   VPC:
     Type: AWS::EC2::VPC
     Properties:
-      CidrBlock: 
+      CidrBlock:
       ...
       ...
       Tags:
@@ -121,15 +123,27 @@ Resources:
 
 From a browser open the [AWS Management Console](https://ap-southeast-2.console.aws.amazon.com/cloudformation/home?region=ap-southeast-2).  Sign in, select any region.  Find CloudFormation in the menus, use the search feature if needed.  Once in, click "Create Stack".  Select the option to upload your own template, and hit next.
 
+Once the stack has deployed successfully, examine the stack and the resources it created.
+
 ##### **2. CLI**
 
 ```bash
 aws cloudformation create-stack --stack-name MyNetwork --template-body file://vpc.yml
-
 ```
 
 ```--stack-name``` Can be anything you like <br>
 ```--template-body``` The file you have been working on (VPC.yml)
+
+You could encounter a non-syntactical error (e.g. permissions) several minutes into a stack creation.  When this happens, you'll have to check the status periodically to detect issues.  A convenient alternative is to wait for the stack to finish, or error out, with this function:
+
+```bash
+aws cloudformation wait stack-create-complete --stack-name MyNetwork
+```
+Examine the stack once deployment is complete:
+
+```bash
+aws cloudformation describe-stacks
+```
 
 </Details>
 
@@ -137,16 +151,17 @@ aws cloudformation create-stack --stack-name MyNetwork --template-body file://vp
 
 <Details>
 <Summary><b>VPC References</b></Summary>
+<br/>
 
 **1. VPC Introduction:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/
 
 **2. PC Subnets:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html
 
-**3. VPC wizard configuration:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Scenario2.html 
+**3. VPC wizard configuration:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Scenario2.html
 
-**4. NAT Gateways:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html 
+**4. NAT Gateways:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html
 
-**5. Elastic IPs:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-eips.html 
+**5. Elastic IPs:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-eips.html
 
 **6. Security Groups and NACLs:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Security.html
 
