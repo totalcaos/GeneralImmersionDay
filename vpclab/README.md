@@ -1,13 +1,13 @@
 # VPC Hands On Lab
 ### Getting Started with Virtual Private Cloud
 
-## Virtual Private Cloud (VPC) Overview
+## **Virtual Private Cloud (VPC) Overview**
 
 Amazon Virtual Private Cloud (Amazon VPC) lets you provision a logically isolated section of the AWS Cloud where you can launch AWS resources in a virtual network that you define. You have complete control over your virtual networking environment, including selection of your own IP address range, creation of subnets, and configuration of route tables and network gateways. You can use both IPv4 and IPv6 in your VPC for secure and easy access to resources and applications.
 
 In this lab, you will learn how to set up a VPC with public and private subnets. You will also learn about AWS networking concepts such as Elastic IPs, NAT Gateways, and Flow Logs.
 
-## Navigate to the VPC Dashboard
+## **Navigate to the VPC Dashboard**
 
 To get started, let’s take a look at the VPC Dashboard.  In every region, a **default VPC** has already been created for you. So, even if you haven’t created anything in your account yet, you will see some VPC resources already there.
 
@@ -36,7 +36,7 @@ This Elastic IP will be used to create a **Network Address Translation (NAT) gat
 
 Click on **Create VPC**. This step will take a couple minutes. Once your VPC has been created, click **OK**. 
 
-## What the VPC Wizard Created
+## **What the VPC Wizard Created**
 Let’s walk through the VPC Console and explain each component that the wizard created. 
 
 From the last step, you should now be on the **Your VPCs** dashboard looking at all of your VPCs in this region. Select the VPC that you just created, and look at the **Summary** tab. If you can’t see everything in the pane, you can pull the pane up by dragging on the pane’s top line. 
@@ -81,6 +81,8 @@ Allowing all traffic in and out of your subnets is not a good security posture. 
 Security Groups are virtual stateful firewalls at the resource (EC2 instance) level. It is best practice to implement necessary firewall rules with Security Groups first and only adding rules to NACLs as necessary. For instance, you can explicitly deny traffic from specific IPs with NACLs but not with Security Groups. We will explore Security Groups more in the next section.
 
 We have now gone through the bread and butter of AWS networking. You should now understand how routing works in a VPC, what makes a subnet public or private, and how to secure your resources at the subnet and resource levels.
+
+## **Additional Resources**
 
 <Details>
 <Summary><b>Challenge Tasks</b></Summary>
@@ -133,7 +135,7 @@ aws cloudformation create-stack --stack-name MyNetwork --template-body file://vp
 <br>
 
 <Details>
-<Summary><b>Additional VPC Resources</b></Summary>
+<Summary><b>VPC References</b></Summary>
 
 **1. VPC Introduction:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/
 
