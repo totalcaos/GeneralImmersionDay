@@ -83,17 +83,6 @@ Security Groups are virtual stateful firewalls at the resource (EC2 instance) le
 We have now gone through the bread and butter of AWS networking. You should now understand how routing works in a VPC, what makes a subnet public or private, and how to secure your resources at the subnet and resource levels.
 
 <Details>
-<Summary><b>Challenge Tasks</b></Summary>
-
-### Use CloudFormation to deploy a VPC
-
-
-
-</Details>
-
-<br>
-
-<Details>
 <Summary><b>Additional VPC Resources</b></Summary>
 
 **1. VPC Introduction:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/
