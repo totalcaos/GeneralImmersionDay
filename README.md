@@ -16,11 +16,14 @@ The code and instructions in this workshop assume only one participant is using 
 
 Use a personal account or create a new AWS account for this workshop rather than using an organization's account to ensure you have full access to the necessary services and to ensure you do not leave behind any resources from the workshop.
 
-### **AWS CLI (Optional)**
+### **Tools**
 
-The AWS CLI provides direct access to the public APIs of AWS services.  The AWS CLI will be required for some of the optional and challenge tasks in this workshop.
+To complete parts of the workshop and some challenge tasks, you will need these tools installed on your workstations:
 
-See [Installing the CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) to install and configure the AWS CLI.
+* ssh (MacOS / Linux)
+* Putty (Windows)
+* Windows Remote Desktop Client
+* AWS CLI (Optional) - See [Installing the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) to install and configure the AWS CLI.
 
 ## **Hands on Lab Modules**
 
