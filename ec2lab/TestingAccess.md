@@ -5,21 +5,21 @@ To connect to the Windows desktop, we will use a RDP client.  If you’re using 
 
 Retrieve the automatically generated, encrypted Windows password by right clicking your instance and selecting **Get Windows Password**
 
-![EC2-14](ec2-14.PNG)
+![EC2-14](ec2-14.png)
 
 On the next screen, click the Choose File button and select the private key file that was automatically downloaded earlier when you launched the instance.  Then click **Decrypt Password** to obtain the Administrator password
 
-![EC2-15](ec2-15.PNG)
+![EC2-15](ec2-15.png)
 
 The decrypted Administrator password should look something like this:
 
-![EC2-16](ec2-16.PNG)
+![EC2-16](ec2-16.png)
 
 Note that since only you have the private key, it’s important to understand the automatically generated password can only be decrypted by you.  So it’s important to keep this key secure.  Generally, the automatically generated password is changed by the customer after first login. If the automatically generated password is not changed and the private key is lost, there’s no way to recover the password.
 
 Start your RDP application and connect to the hostname of your instance.   The hostname can be found in a couple of different places.  For example, in the web console, you’ll see hostname listed as the **Public DNS** of the instance
 
-![EC2-17](ec2-17.PNG)
+![EC2-17](ec2-17.png)
 
 In your RDP application, use **Administrator** as the username along with the decrypted password.  Once connected, you will have access to the Windows desktop.   At this point, feel free to explore Windows.  You should change the Administrator password to something friendlier or easy to remember (but still secure of course)
 
@@ -29,7 +29,7 @@ In this section, you will ping the EC2 instance that you just created and learn 
 
 As the EC2 instance has a public IP address and it’s in the public subnet which has a route to an IGW, we should be able to ping the instance over the internet.
 
-![EC2-18](ec2-18.PNG)
+![EC2-18](ec2-18.png)
 
 To ping the instance, you need to open your CLI. On Windows, open the **Command Prompt**. On Mac, open the **Terminal**. Type ping, then a space, then paste the Public IP from above and click **enter**.
 
@@ -54,7 +54,7 @@ Next, let’s check our virtual firewall configurations. As you remember, we lef
 
 In the EC2 dashboard, go to the Instances section in the sidebar. Select the instance that you created and look at the Description tab. In the left column, click on the first Security groups link. It should be called something similar to **_“[Your Name] Web Server SG”_**
 
-![EC2-19](ec2-19.PNG)
+![EC2-19](ec2-19.png)
 
 You are now in the **Security Groups** dashboard. Go to the **Inbound** tab. 
 
@@ -62,11 +62,11 @@ Remember when we were creating the EC2 instance we only specified ports 3389 and
 
 Pings use ICMP, so we will need to change the security group rule to allow ICMP traffic.  Click on the **Edit** button.
 
-![EC2-20](ec2-20.PNG)
+![EC2-20](ec2-20.png)
 
 Click on the **Add Rule** button, then add a rule to allow ICMP inbound from all IP addresses.  Click **Save** to save the rule.
 
-![EC2-20](ec2-21.PNG)
+![EC2-20](ec2-21.png)
 
 _In this lab we are creating a Windows server that has ICMP access that is “open to the world” this is something that you wouldn’t normally do._
 
