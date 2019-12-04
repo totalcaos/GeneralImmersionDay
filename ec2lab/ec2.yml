@@ -4,7 +4,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       InstanceType: t3.medium
-      ImageId: ami-01b9e78fb84ac8b2f
+      ImageId: ami-0fb8890c7a7ca1457
       UserData:
         'Fn::Base64':
           !Sub |

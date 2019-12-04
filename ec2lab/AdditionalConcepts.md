@@ -45,7 +45,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ...
-      ImageId: ami-01b9e78fb84ac8b2f
+      ...
       UserData:
         'Fn::Base64':
           !Sub |
