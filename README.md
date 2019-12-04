@@ -26,7 +26,7 @@ See [Installing the CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-ch
 
 1. **[VPC Immersion Lab](vpclab/README.md)**
 2. **[EC2 Immersion Lab](ec2lab/README.md)**
-3. **[S3 Immersion Lab](s3lab/README.md)**
+3. **[Storage on AWS Immersion Lab](storagelab/README.md)**
 4. **[AWS Aurora RDS Hands on Lab](auroralab/README.md)**
 
 
