@@ -1,3 +1,6 @@
+[Home](../README.md)<br>
+[Module Home](README.md)
+
 # **EC2 Hands On Lab (contd.)**
 ## **Remote access to your EC2 Instance**
 

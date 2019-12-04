@@ -1,3 +1,5 @@
+[Home](../README.md)
+
 # VPC Hands On Lab
 ### Getting Started with Virtual Private Cloud
 

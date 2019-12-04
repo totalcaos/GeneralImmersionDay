@@ -1,3 +1,6 @@
+[Home](../README.md)<br>
+[Module Home](README.md)
+
 # **EC2 Hands On Lab (contd.)**
 ## **Changing the Instance Type**
 
