@@ -49,9 +49,9 @@ PING 18.191.183.158 (18.191.183.158): 56 data bytes
 Request timeout for icmp_seq 0
 ```
 
-**_Why aren’t we able to reach this instance?_** 
+**_Why aren’t we able to reach this instance?_**
 
-You can confirm that the instance is in the public subnet and check the route table associated with that subnet to make sure there is a route to the IGW. 
+You can confirm that the instance is in the public subnet and check the route table associated with that subnet to make sure there is a route to the IGW.
 
 Next, let’s check our virtual firewall configurations. As you remember, we left the NACL of the public subnet as is, which allows all traffic by default. So, let’s check the security group associated with this instance.
 
@@ -59,7 +59,7 @@ In the EC2 dashboard, go to the Instances section in the sidebar. Select the ins
 
 ![EC2-19](ec2-19.png)
 
-You are now in the **Security Groups** dashboard. Go to the **Inbound** tab. 
+You are now in the **Security Groups** dashboard. Go to the **Inbound** tab.
 
 Remember when we were creating the EC2 instance we only specified ports 3389 and 80 opened when creating the Security Group.
 
@@ -97,11 +97,11 @@ round-trip min/avg/max/stddev = 268.993/417.081/966.490/218.663 ms
 <Details>
 <Summary><b>Optional - Test Access to Private Instance</b></Summary>
 <br>
-You can go through the same process in the last two sections in order to test access to a private EC2 instance. 
+You can go through the same process in the last two sections in order to test access to a private EC2 instance.
 
-The only difference will be in the **Configure Instance Details** section, you will select the **Private subnet**. 
+The only difference will be in the **Configure Instance Details** section, you will select the **Private subnet**.
 
-Remember that this is not best practice for public facing resources, but in this case the instance will not be reachable anyways because the private subnet does not have an IGW route. 
+Remember that this is not best practice for public facing resources, but in this case the instance will not be reachable anyways because the private subnet does not have an IGW route.
 
 We just want a public IP to try to access, and for this, the automatically assigned public IP is sufficient. Additionally, you will want to open up your security group from the beginning. That way, this private instance will be the same in every way to the public instance you just created except that it does not have a route to an IGW and thus cannot be accessed publicly
 
@@ -111,11 +111,3 @@ We just want a public IP to try to access, and for this, the automatically assig
 ## **Additional EC2 Concepts**
 
 Now that we have an understanding of connecting to and accessing our EC2 instances, lets look at some additional EC2 concepts in the **[next section](AdditionalConcepts.md)**.
-
-<br>
-<Details>
-<Summary><b>Optional (Challenge) - Deploy an EC2 Instance Using CloudFormation</b></Summary>
-
-
-
-</Details>
