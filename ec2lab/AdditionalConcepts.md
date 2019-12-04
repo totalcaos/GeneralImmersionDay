@@ -83,7 +83,7 @@ Resources:
     Description: Public IP Address of the EC2 Instance.
     Value: !Ref 'EIpAddress'
 ```
-
+<br>
 <b>Resources & Documentation</b>
 
 * [EC2 Instance CFN Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance.html)
@@ -93,6 +93,17 @@ Resources:
 
 </Details>
 <br>
+<Details>
+<Summary><b>Optional - Deploy an <i><u>Amazon Linux</u></i> EC2 Instance</b></Summary>
+<br>
+Modify the CloudFormation Template you created above to deploy an Amazon Linux EC2 Instance.  Use the code below in the user data section to deploy a webserver on the instance.
+
+```bash
+#include
+https://s3.amazonaws.com/immersionday-labs/bootstrap.sh
+```
+
+</Details>
 
 ### Additional resources & reading
 
