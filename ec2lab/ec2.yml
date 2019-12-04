@@ -1,0 +1,64 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: ---
+Parameters:
+  KeyName:
+    Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
+    Type: 'AWS::EC2::KeyPair::KeyName'
+    ConstraintDescription: must be the name of an existing EC2 KeyPair.
+  VPCId:
+    Description: Select an existing VPC
+    Type: 'AWS::EC2::VPC::Id'
+    ConstraintDescription: must be the name of an existing VPC
+  SubnetId:
+    Description: 
+    Type: 'AWS::EC2::Subnet::Id'
+    ConstraintDescription: must be the name of an existing Subnet
+Resources: 
+  Ec2Instance:
+    Type: AWS::EC2::Instance  
+    Properties:
+      InstanceType: t3.medium
+      ImageId: ami-01b9e78fb84ac8b2f
+      UserData:
+        'Fn::Base64': 
+          !Sub |
+            <powershell>
+            Import-Module ServerManager;
+            Install-WindowsFeature Web-Server -IncludeManagementTools -IncludeAllSubFeature
+            remove-item -recurse c:\inetpub\wwwroot\*
+            (New-Object System.Net.WebClient).DownloadFile("https://immersionday-labs.s3.amazonaws.com/ec2-windows.zip", "c:\inetpub\wwwroot\ec2-windows.zip")
+
+            $shell = new-object -com shell.application
+            $zip = $shell.NameSpace("c:\inetpub\wwwroot\ec2-windows.zip")
+            foreach($item in $zip.items())
+            {
+              $shell.Namespace("c:\inetpub\wwwroot\").copyhere($item)
+            }
+            Start-Process "iisreset.exe" -NoNewWindow -Wait
+
+            Import-Module NetSecurity;
+            Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -enabled True
+            </powershell>
+      Tags:
+        - Key: Name
+          Value: My EC2 Instance
+      SecurityGroupIds:
+        !Ref EC2SecGroup
+  EC2SecGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: EC2WebSecGroup
+      GroupDescription: EC2 Web Security Group 
+      VpcId: !Ref VPCId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 3389
+          ToPort: 3389
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: My EC2 Instance SG

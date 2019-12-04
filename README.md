@@ -1,4 +1,4 @@
-# **General Immersion Day**
+# **AWS General Immersion Day**
 
 In this introductory session, through a mix of classroom training and hands-on labs, you will learn about AWS foundational services as well as key concepts for AWS security measures and architecture best practices.  In this session you will:
 
