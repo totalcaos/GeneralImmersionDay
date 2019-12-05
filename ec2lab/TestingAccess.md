@@ -1,4 +1,4 @@
-**[Labs Home](../README.md) | [Back ..](README.md)**
+**[Back](README.md) | [Labs Home](../README.md) | [Next](AdditionalConcepts.md)**
 
 # **EC2 Hands On Lab (contd.)**
 ## **Remote access to your EC2 Instance**
@@ -111,4 +111,4 @@ We just want a public IP to try to access, and for this, the automatically assig
 
 Now that we have an understanding of connecting to and accessing our EC2 instances, lets look at some additional EC2 concepts in the **[next section](AdditionalConcepts.md)**.
 
-**[Labs Home](../README.md) | [Back ..](README.md)**
+**[Back](README.md) | [Labs Home](../README.md) | [Next](AdditionalConcepts.md)**

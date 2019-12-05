@@ -1,4 +1,4 @@
-[Home](../README.md)
+**[Labs Home](../README.md)**
 
 # **EC2 Hands On Lab**
 
@@ -111,4 +111,4 @@ Open a new browser tab and browse the Web Server by entering the EC2 instance’
 
 Now that the EC2 instance is running, lets test our access to the instance in the **[next section.](TestingAccess.md)**
 
-[Home](../README.md)
+**[Labs Home](../README.md) | [Next](TestingAccess.md)**

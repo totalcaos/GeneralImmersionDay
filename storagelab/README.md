@@ -160,7 +160,7 @@ Let's move on to the **[next module](s3lab.md)** to look at Object Storage, i.e.
 <Details>
 <Summary><b><u>Challenge task:</u> Use a cloud formation template to complete this lab</b></summary>
 
-Re-use or modify the cloud formation template you created in the ec2 labs to launch an **Amazon linux EC2 instance** to complete this lab.   Use the code snippet to automatically configure the file system:
+Re-use or modify the cloud formation template you created during the **[EC2 Hands on Labs](../ec2lab/AdditionalConcepts.md)** to launch an **Amazon linux EC2 instance** to complete this lab. Use the code snippet below to automatically configure the file system in the CloudFormation template.
 
 ```yaml
 AWSTemplateFormatVersion: 2010-09-09
