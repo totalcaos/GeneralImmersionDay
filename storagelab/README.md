@@ -163,8 +163,54 @@ Let's move on to the **[next module](s3lab.md)** to look at Object Storage, i.e.
 Re-use or modify the cloud formation template you created in the ec2 labs to launch an **Amazon linux EC2 instance** to complete this lab.   Use the code snippet to automatically configure the file system:
 
 ```yaml
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  Ec2Instance:
+    ...
+    ...
+    Metadata:
+      AWS::CloudFormation::Init:
+        config:
+          commands:
+            1_pvcreate:
+              command: pvcreate /dev/xvdf
+            2_vgcreate:
+              command: vgcreate vg0 /dev/xvdf
+            3_lvcreate:
+              command: lvcreate -l 100%FREE -n myapp vg0
+            4_mkfs:
+              command: mkfs.ext4 /dev/vg0/myapp
+            5_mkdir:
+              command: mkdir /var/myapp
+            6_fstab:
+              command: echo "/dev/mapper/vg0-myapp /var/myapp ext4 defaults 0 2" >> /etc/fstab
+            7_mount:
+              command: mount -a
+    Properties:
+      ...
+      ...
+      UserData:
+        'Fn::Base64':
+          !Sub |
+           #!/usr/bin/env bash
+         set -o errexit
+         yum -y update aws-cfn-bootstrap
+         /opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource EC2Instance --region ${AWS::Region}
+         /opt/aws/bin/cfn-signal --exit-code $? --stack ${AWS::StackName} --resource EC2Instance --region ${AWS::Region}
+      ...
+      ...
+Outputs:
+  InstanceId:
+    Description: InstanceID of the new EC2 Instance.
+    Value: !Ref 'Ec2Instance'
+  InstanceIpAddress:
+    Description: Public IP Address of the EC2 Instance.
+    Value: !Ref 'EIpAddress'
+
 ```
 
 </Details>
+
+<br>
 
 **[Labs Home](../README.md)**
