@@ -1,5 +1,4 @@
-[Home](../README.md)<br>
-[Module Home](README.md)
+**[Labs Home](../README.md) | [Back ..](TestingAccess.md)**
 
 # **EC2 Hands On Lab (contd.)**
 ## **Changing the Instance Type**
@@ -38,7 +37,7 @@ The challenge here is to deploy an EC2 instance into the VPC we created earlier 
 
 Use this CloudFormation Template as a starting point:
 
-```
+```yaml
 AWSTemplateFormatVersion: 2010-09-09
 Resources:
   Ec2Instance:
@@ -109,3 +108,5 @@ https://s3.amazonaws.com/immersionday-labs/bootstrap.sh
 
 * [EC2 User Data](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html)
 * [Using Tags](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html)
+
+**[Labs Home](../README.md) | [Back ..](TestingAccess.md)**

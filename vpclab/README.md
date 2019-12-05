@@ -1,4 +1,4 @@
-[Home](../README.md)
+**[Labs Home](../README.md)**
 
 # VPC Hands On Lab
 ### Getting Started with Virtual Private Cloud
@@ -168,3 +168,5 @@ aws cloudformation describe-stacks
 **6. Security Groups and NACLs:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Security.html
 
 </Details>
+
+**[Labs Home](../README.md)**

@@ -1,3 +1,5 @@
+**[Labs Home](../README.md)**
+
 # **Storage on AWS Hands on Labs**
 
 In this lab, we will look at working with Elastic Block Store (EBS) Volumes and Object Stores (S3).
@@ -13,8 +15,6 @@ During this lab, you'll create an EBS volume, attach it to an EC2 instance, form
 The first thing you’ll do is create a new Elastic Block Store (EBS) volume. You’ll simply specify the initial size for the volume, and assign it the default General Purpose SSD volume type. Next, you’ll attach the new EBS volume to an EC2 instance.
 
 Navigate to the **[AWS EC2 Console](https://ap-southeast-2.console.aws.amazon.com/ec2/home?region=ap-southeast-2)** and launch a **t3.small** Ubuntu EC2 instance in the previously created VPC's public subnet.  Ensure you enable SSH access (port 22) from the internet to this instance.
-
-**<u>Challenge task:</u> Use a cloud formation template to create this EC2 Instance**
 
 ![ST1](st1.png)
 
@@ -155,4 +155,16 @@ After completing this lab, make sure you clean up any resources that you created
 
 After completing this lab, you should be familiar with the essentials of the Amazon Elastic Block Store (EBS) service. You’ve learned how to create a new EBS volume and attach it to an EC2 instance. Next, you logged into your EC2 instance and partitioned and mounted the disk, and generated some mock disk activity. Finally, you used the AWS Management Console to reconfigure the EBS volume’s attributes to change the volume type and increase its performance.
 
-Let's move on to the next module to look at Object Storage, i.e. S3
+Let's move on to the **[next module](s3lab.md)** to look at Object Storage, i.e. S3
+
+<Details>
+<Summary><b><u>Challenge task:</u> Use a cloud formation template to complete this lab</b></summary>
+
+Re-use or modify the cloud formation template you created in the ec2 labs to launch an **Amazon linux EC2 instance** to complete this lab.   Use the code snippet to automatically configure the file system:
+
+```yaml
+```
+
+</Details>
+
+**[Labs Home](../README.md)**
