@@ -1,10 +1,36 @@
 AWSTemplateFormatVersion: 2010-09-09
+Description: "This template launches an Amazon Linux EC2 instance and installs and configures apache in the ap-southeast-2 region."
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      -
+        Label:
+          default: "Network Configuration"
+        Parameters:
+          - SubnetId
+          - SecurityGroupID
+      -
+        Label:
+          default: "Instance Configuration"
+        Parameters:
+          - KeyID
+Parameters:
+  SubnetId:
+    Description: Select Subnet
+    Type: "AWS::EC2::Subnet::Id"
+  SecurityGroupID:
+    Description: Select Security Groups
+    Type: "AWS::EC2::SecurityGroup::Id"
+  KeyID:
+    Description: Select Public Key
+    Type: AWS::EC2::KeyPair::KeyName
 Resources:
   Ec2Instance:
     Type: AWS::EC2::Instance
     Properties:
       InstanceType: t3.medium
       ImageId: ami-0119aa4d67e59007c
+      KeyName: !Ref KeyID
       UserData:
         'Fn::Base64':
           !Sub |
@@ -13,9 +39,12 @@ Resources:
       Tags:
         - Key: Name
           Value: My EC2 Instance
-      SecurityGroupIds:
-        - sg-0dce1cbd2b76f0c59
-      SubnetId: subnet-092cd96fbbbad61bb
+      SecurityGroupIds: !Split
+        - ','
+        - !Join
+          - ','
+          -  - !Ref SecurityGroupID
+      SubnetId: !Ref SubnetId
   EIpAddress:
     Type: AWS::EC2::EIP
   EIpAssociation:

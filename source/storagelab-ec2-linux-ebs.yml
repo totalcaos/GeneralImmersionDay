@@ -1,46 +1,49 @@
 AWSTemplateFormatVersion: 2010-09-09
+Description: "This template launches an Amazon Linux EC2 instance and attaches a 100GB disk in the ap-southeast-2 region."
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      -
+        Label:
+          default: "Network Configuration"
+        Parameters:
+          - SubnetId
+          - SecurityGroupID
+      -
+        Label:
+          default: "Instance Configuration"
+        Parameters:
+          - KeyID
+Parameters:
+  SubnetId:
+    Description: Select Subnet
+    Type: "AWS::EC2::Subnet::Id"
+  SecurityGroupID:
+    Description: Select Security Groups
+    Type: "AWS::EC2::SecurityGroup::Id"
+  KeyID:
+    Description: Select Public Key
+    Type: AWS::EC2::KeyPair::KeyName
 Resources:
   Ec2Instance:
     Type: AWS::EC2::Instance
-    Metadata:
-      AWS::CloudFormation::Init:
-        config:
-          commands:
-            1_pvcreate:
-              command: pvcreate /dev/xvdf
-            2_vgcreate:
-              command: vgcreate vg0 /dev/xvdf
-            3_lvcreate:
-              command: lvcreate -l 100%FREE -n myapp vg0
-            4_mkfs:
-              command: mkfs.ext4 /dev/vg0/myapp
-            5_mkdir:
-              command: mkdir /var/myapp
-            6_fstab:
-              command: echo "/dev/mapper/vg0-myapp /var/myapp ext4 defaults 0 2" >> /etc/fstab
-            7_mount:
-              command: mount -a
     Properties:
       InstanceType: t3.medium
       ImageId: ami-0119aa4d67e59007c
-      UserData:
-        'Fn::Base64':
-          !Sub |
-           #!/usr/bin/env bash
-         set -o errexit
-         yum -y update aws-cfn-bootstrap
-         /opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource EC2Instance --region ${AWS::Region}
-         /opt/aws/bin/cfn-signal --exit-code $? --stack ${AWS::StackName} --resource EC2Instance --region ${AWS::Region}
+      KeyName: !Ref KeyID
       Tags:
         - Key: Name
           Value: My EC2 Instance
-      SecurityGroupIds:
-        - sg-0dce1cbd2b76f0c59
-      SubnetId: subnet-092cd96fbbbad61bb
+      SecurityGroupIds: !Split
+        - ','
+        - !Join
+          - ','
+          -  - !Ref SecurityGroupID
+      SubnetId: !Ref SubnetId
       BlockDeviceMappings:
         - DeviceName: /dev/sdf
           Ebs:
-            DeleteOnTermination: false
+            DeleteOnTermination: true
             VolumeSize: 100
   EIpAddress:
     Type: AWS::EC2::EIP

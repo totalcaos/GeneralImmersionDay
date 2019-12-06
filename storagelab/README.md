@@ -158,9 +158,9 @@ After completing this lab, you should be familiar with the essentials of the Ama
 Let's move on to the **[next module](s3lab.md)** to look at Object Storage, i.e. S3
 
 <Details>
-<Summary><b><u>Challenge task:</u> Use a cloud formation template to complete this lab</b></summary>
+<Summary><b><u>Challenge task:</u> Use a cloud formation template to attach a 100 GB EBS volume to an Amazon EC2 Linux instance.</b></summary>
 
-Re-use or modify the cloud formation template you created during the **[EC2 Hands on Labs](../ec2lab/AdditionalConcepts.md)** to launch an **Amazon linux EC2 instance** to complete this lab. Use the code snippet below to automatically configure the file system in the CloudFormation template.
+Re-use or modify the cloud formation template you created during the **[EC2 Hands on Labs](../ec2lab/AdditionalConcepts.md)** to launch an **Amazon linux EC2 instance** and attach a 100GB EBS Volume.
 
 ```yaml
 AWSTemplateFormatVersion: 2010-09-09
@@ -168,35 +168,15 @@ Resources:
   Ec2Instance:
     ...
     ...
-    Metadata:
-      AWS::CloudFormation::Init:
-        config:
-          commands:
-            1_pvcreate:
-              command: pvcreate /dev/xvdf
-            2_vgcreate:
-              command: vgcreate vg0 /dev/xvdf
-            3_lvcreate:
-              command: lvcreate -l 100%FREE -n myapp vg0
-            4_mkfs:
-              command: mkfs.ext4 /dev/vg0/myapp
-            5_mkdir:
-              command: mkdir /var/myapp
-            6_fstab:
-              command: echo "/dev/mapper/vg0-myapp /var/myapp ext4 defaults 0 2" >> /etc/fstab
-            7_mount:
-              command: mount -a
     Properties:
       ...
-      ...
-      UserData:
-        'Fn::Base64':
-          !Sub |
-           #!/usr/bin/env bash
-         set -o errexit
-         yum -y update aws-cfn-bootstrap
-         /opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource EC2Instance --region ${AWS::Region}
-         /opt/aws/bin/cfn-signal --exit-code $? --stack ${AWS::StackName} --resource EC2Instance --region ${AWS::Region}
+      KeyName: !Ref KeyID
+      Tags:
+        - Key: Name
+          Value: My EC2 Instance
+      BlockDeviceMappings:
+        ...
+        ...
       ...
       ...
 Outputs:
@@ -208,6 +188,8 @@ Outputs:
     Value: !Ref 'EIpAddress'
 
 ```
+
+Use the steps above to manually configure and mount the EBS volume
 
 </Details>
 

@@ -1,0 +1,1 @@
+## These labs assume instance launches in the ap-southeast region
