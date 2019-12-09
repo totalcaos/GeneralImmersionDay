@@ -23,6 +23,7 @@ To complete parts of the workshop and some challenge tasks, you will need these 
 * ssh (MacOS / Linux)
 * Putty (Windows)
 * Windows Remote Desktop Client
+* MySQL Client / MySQL Workbench (Windows)
 * AWS CLI (Optional) - See [Installing the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) to install and configure the AWS CLI.
 
 ## **Hands on Lab Modules**
