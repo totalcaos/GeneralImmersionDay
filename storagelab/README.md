@@ -191,6 +191,11 @@ Outputs:
 
 Use the steps above to manually configure and mount the EBS volume
 
+<b>Resources & Links</b>
+
+* [EC2 Instance CFN Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance.html)
+* [EC2 Block Device Mapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-mapping.html)
+
 </Details>
 
 <br>
