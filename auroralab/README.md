@@ -439,7 +439,7 @@ Remember to clean up your lab environments by deleting
 * All database instances
 * Database snapshots
 * Removing the event subscription
-* Deleting the event Notificaiton topic
+* Deleting the event Notification topic
 
 <br>
 
