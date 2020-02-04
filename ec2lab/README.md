@@ -12,13 +12,13 @@ This lab will walk you through launching, configuring, and customizing an EC2 we
 
 In this example we will launch a Windows Server 2019 instance with the IIS web server installed upon boot.
 
-Sign into the AWS Management Console and open the **Amazon EC2 console** https://console.aws.amazon.com/ec2.
+Sign into the AWS Management Console and open the **Amazon EC2 console**  **https://console.aws.amazon.com/ec2.**
 
 Click on **Launch Instance**
 
 ![EC2-1](ec2-1.PNG)
 
-Scroll down and click Select on the Windows Server 2019 Base AMI
+Scroll down and click Select on the Windows Server 2019 Base AMI (shown in the picture below)
 
 ![EC2-2](ec2-2.PNG)
 
@@ -30,10 +30,7 @@ On the **Configure Instance Details** page, select the VPC you created in the [p
 
 ![EC2-5](ec2-5.PNG)
 
-Now expand the **Advanced Details** section, copy/paste the script below into the User Data field (this PowerShell script will install/start IIS and deploy a simple web page) and click **Next: Add Storage**:
-
-<Details>
-<Summary>UserData Code</Summary>
+Now expand the **Advanced Details** section, copy/paste the script below into the User Data field (this PowerShell script will install/start IIS and deploy a simple web page)
 
 ```powershell
 <powershell>
@@ -54,12 +51,13 @@ Import-Module NetSecurity;
 Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -enabled True
 </powershell>
 ```
-</Details>
+
+Now click **Next: Add Storage**:
 <br>
 
 ![EC2-4](ec2-4.PNG)
 
-On the **Step 4: Add Storage** screen, **Click Next: Add Tags** to accept the default Storage Device Configuration and move to the Step 5: Add Tags screen.
+On the **Step 4: Add Storage** screen, **Click Next: Add Tags** and accept the default Storage Device Configuration and move to the Step 5: Add Tags screen.
 
 Next, choose a “friendly name” for your instance. This name, more correctly known as a tag, will appear in the console once the instance launches. It makes it easy to keep track of running machines in a complex environment. Name yours according to this format: **_“[Your Name] Web Server”_**.
 
@@ -67,19 +65,23 @@ Next, choose a “friendly name” for your instance. This name, more correctly 
 
 Then click Next: **Configure Security Group**.
 
-You will be prompted to create a new security group, which will be your **firewall rules**. On the assumption that we are building out a Web server, name this security group according to this format **_“[Your Name] Web Server SG”_**, and open ports **3389** and **80**.
+You will be prompted to create a new security group, which will be your **firewall** to control access to the EC2 instance we are launching . As we are building out a Web server, name this security group according to this format **_“[Your Name] Web Server SG”_**.
 
-Click the **Review and Launch** button after configuring the security group.
+Add **firewall rules** to allow Remote Desktop (RDP) and HTTP traffic to your server by opening ports **3389** and **80** as shown in the picture below
 
 ![EC2-7](ec2-7.PNG)
+
+Click the **Review and Launch** button after configuring the security group.
 
 Review your choices, and then click **Launch**.
 
 ![EC2-8](ec2-8.PNG)
 
-_Note the two warning boxes at the top of the page, these are to warn you about possible configuration issues. In this lab we are creating a Windows server that has RDP access that is “open to the world” this is something that you wouldn’t normally do._
+ > _**Note** the two warning boxes at the top of the page, these are to warn you about possible configuration issues. In this lab we are creating a Windows server that has RDP access that is “open to the world” this is something that you wouldn’t normally do._
 
-Now you need to create a public/private keypair.  When this instance launches, you will connect to it via Remote Desktop using the credentials for “administrator”.  For Windows instances, EC2 automatically generates a password and encrypts with your public key.  To decrypt the encrypted password, you will use your private key.   Let’s create a new public/private keypair.
+Now you need to create a public/private keypair.  When this instance launches, you will connect to it via Remote Desktop using the credentials for “Administrator”.  
+
+For Windows instances, EC2 automatically generates a password and encrypts with your public key.  To decrypt the encrypted password, you will use your private key.   Let’s create a new public/private keypair.
 
 ![EC2-9](ec2-9.PNG)
 
@@ -97,7 +99,9 @@ The next screen will confirm that your instance is now launching.  Click the **V
 
 ### **Browse the Web Server**
 
-Now you will browse to the Web Server site that was installed on the Instance using the PowerShell script defined in the User Data section during creation of the instance. Wait for the instance to pass the Status Checks.  For Windows instances, this could take up to 10 minutes.
+Now you will browse to the Web Server site that was installed on the Instance using the PowerShell script defined in the User Data section during creation of the instance. 
+
+Wait for the instance to pass the Status Checks.  For Windows instances, **this could take up to 10 minutes**.
 
 When complete, you will see the Status Checks have passed.
 
