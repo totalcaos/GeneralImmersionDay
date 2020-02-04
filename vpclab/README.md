@@ -56,7 +56,7 @@ You can see that there are no **explicit subnet associations** on this route tab
 What makes a subnet public or private? We can find out by looking at the routes in this table.
 Click on the **Routes** tab.
 
-In the **Routes** tab, look at the **Target** column. You’ll see one **local route** which every route table has. This ensures that resources within the VPC can talk to each other.
+In the **Routes** tab, look at the **Target** column. You’ll see one **local route** which every route table has. This ensures that resources (like EC2 Instances) within the VPC can talk to each other.
 
 You will also see a route to the **NAT gateway** that the wizard created. Remember that a NAT gateway gives internet access to resources which are not publicly accessible. Because the resources in this subnet are not publicly accessible, this is considered a **private subnet**.
 
@@ -168,5 +168,6 @@ aws cloudformation describe-stacks
 **6. Security Groups and NACLs:** https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Security.html
 
 </Details>
+<br>
 
 **[Labs Home](../README.md)**

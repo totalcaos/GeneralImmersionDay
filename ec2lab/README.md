@@ -26,7 +26,7 @@ In the **Choose Instance Type** tab, select the **t3.medium** instance size and 
 
 ![EC2-3](ec2-3.PNG)
 
-On the **Configure Instance Details** page, select the VPC you created in the [previous module](../vpclab/README.md), and the Public Subnet.  Ensure that the Auto-Assign Public IP is enabled.
+On the **Configure Instance Details** page, select the VPC you created in the [previous module](../vpclab/README.md), and the Public Subnet.  Ensure that the **Auto-Assign Public IP** is enabled.
 
 ![EC2-5](ec2-5.PNG)
 
@@ -114,5 +114,21 @@ Open a new browser tab and browse the Web Server by entering the EC2 instance’
 ### **Test Access to your instance**
 
 Now that the EC2 instance is running, lets test our access to the instance in the **[next section.](TestingAccess.md)**
+
+<Details>
+<Summary><b>Chalenge Task - Deploy an EC2 instance using the AWS CLI</b></Summary>
+<br>
+
+```bash
+aws ec2 ...
+```
+<br>
+<b>Resources & Documentation</b>
+
+* [AWS CLI Documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-instances.html)
+* [AWS CLI Configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html#cli-quick-configuration)
+
+</Details>
+<br>
 
 **[Labs Home](../README.md) | [Next](TestingAccess.md)**

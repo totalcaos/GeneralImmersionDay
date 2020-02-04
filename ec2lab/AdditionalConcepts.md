@@ -5,9 +5,13 @@
 
 
 
-Did you know that you can change the instance type that an AMI is running on? This is very useful when you need a larger (or smaller) or perhaps different type of instance to run a workload. This only works with EBS-backed instances (what weâ€™re running here).  There is no particular reason to change the instance type in this lab, but the following steps outline how easy it is to do in AWS
+Did you know that you can change the instance size and/or family of an EC2 instance at any time? 
 
-In the AWS Console, select your lab instance, then right-click on it and hover over **Instance State** and select **Stop** (NOT Terminate).  Then select **Yes, Stop** to confirm.
+This is very useful when you need a larger (or smaller) or perhaps different type of instance to run a workload. This only works with EC2 instances that use EBS (Elastic Block Store) or EBS backed instances (which is what weâ€™re running here).  
+
+There is no particular reason to change the instance type in this lab, but the following steps outline how easy it is to do in AWS
+
+In the AWS Console, select your EC2 instance, then right-click on it and hover over **Instance State** and select **Stop** (NOT Terminate).  Then select **Yes, Stop** to confirm.
 
 ![EC2-22](ec2-22.png)
 
@@ -23,7 +27,7 @@ After going through the options and selecting **t3.large** as the instance type,
 
 <br>
 <Details>
-<Summary><b>Optional (Challenge) - Deploy an EC2 Instance Using CloudFormation</b></Summary>
+<Summary><b>Optional (Challenge Task) - Deploy an EC2 Instance Using CloudFormation</b></Summary>
 <br>
 The challenge here is to deploy an EC2 instance into the VPC we created earlier using code rather than through the console.  In order to do this you will:
 <br>
@@ -31,7 +35,7 @@ The challenge here is to deploy an EC2 instance into the VPC we created earlier 
 * Create a t3.medium Windows EC2 Instance
 * Tag it with the name "[Your Name] Web Server"
 * Deploy it into the Public Subnet of the VPC we created earlier in this module
-* Assign the Security Group _(“[Your Name] Web Server SG”)_ we created earlier to the EC2 Instance
+* Assign the Security Group _([Your Name] Web Server SG)_ we created earlier to the EC2 Instance
 * Allocate an ElasticIP address to the EC2 Instance
 * Test if we can browse to the website on the EC2 Instance
 
@@ -93,7 +97,7 @@ Resources:
 </Details>
 <br>
 <Details>
-<Summary><b>Optional - Deploy an <i><u>Amazon Linux</u></i> EC2 Instance</b></Summary>
+<Summary><b>Optional Task - Deploy an <i><u>Amazon Linux</u></i> EC2 Instance</b></Summary>
 <br>
 Modify the CloudFormation Template you created above to deploy an Amazon Linux EC2 Instance.  Use the code below in the user data section to deploy a webserver on the instance.
 
@@ -101,6 +105,26 @@ Modify the CloudFormation Template you created above to deploy an Amazon Linux E
 #include
 https://s3.amazonaws.com/immersionday-labs/bootstrap.sh
 ```
+
+</Details>
+<br>
+<Details>
+<Summary><b>Optional (Challenge Task) - Modify Instance size using the AWS CLI</b></Summary>
+
+To complete this task you will need to:
+* First, stop the instance using the AWS CLI
+* Use the *"modify-instance-attribute"* command to change the size of the instance
+
+```bash
+bash-3.2$ aws ec2 stop-instances .....
+bash-3.2$ aws ec2 modify-instance-attribute ....
+```
+
+<br>
+<b>Resources & Documentation</b>
+
+* [AWS CLI Documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-instances.html)
+* [modify-instance-attribute documentation](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html)
 
 </Details>
 
