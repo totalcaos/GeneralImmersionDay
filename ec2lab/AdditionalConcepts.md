@@ -97,18 +97,6 @@ Resources:
 </Details>
 <br>
 <Details>
-<Summary><b>Optional Task - Deploy an <i><u>Amazon Linux</u></i> EC2 Instance</b></Summary>
-<br>
-Modify the CloudFormation Template you created above to deploy an Amazon Linux EC2 Instance.  Use the code below in the user data section to deploy a webserver on the instance.
-
-```bash
-#include
-https://s3.amazonaws.com/immersionday-labs/bootstrap.sh
-```
-
-</Details>
-<br>
-<Details>
 <Summary><b>Optional (Challenge Task) - Modify Instance size using the AWS CLI</b></Summary>
 
 To complete this task you will need to:
@@ -127,6 +115,19 @@ bash-3.2$ aws ec2 modify-instance-attribute ....
 * [modify-instance-attribute documentation](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html)
 
 </Details>
+<br>
+<Details>
+<Summary><b>Optional Task - Deploy an <i><u>Amazon Linux</u></i> EC2 Instance</b></Summary>
+<br>
+Modify the CloudFormation Template you created above to deploy an Amazon Linux EC2 Instance.  Use the code below in the user data section to deploy a webserver on the instance.
+
+```bash
+#include
+https://s3.amazonaws.com/immersionday-labs/bootstrap.sh
+```
+
+</Details>
+
 
 ### Additional resources & reading
 
