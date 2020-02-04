@@ -1,4 +1,4 @@
-**[Labs Home](../README.md)**
+**[Labs Home](../README.md)** | **[Next](s3lab.md)**
 
 # **Storage on AWS Hands on Labs**
 
@@ -213,4 +213,4 @@ You will need to:
 </Details>
 <br>
 
-**[Labs Home](../README.md)**
+**[Labs Home](../README.md)** | **[Next](s3lab.md)**

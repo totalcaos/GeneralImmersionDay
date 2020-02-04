@@ -68,7 +68,7 @@ What happens when you click on the Object Url?
 _**Note**: By default, your Amazon S3 buckets and objects are private. To view an object using a URL, for example, `https://s3.amazonaws.com/Bucket/Object` the object must be publicly readable. Otherwise, you will need to create signed URL that includes a signature with authentication information. You can optionally save the object locally._
 
 <Details>
-<Summary><b><u>Challenge task 1:</u> Create an S3 bucket with default server-side bucket encryption enabled using CloudFormation</b></summary>
+<Summary><b>Optional (Challenge Task) - Create an S3 bucket with default server-side bucket encryption enabled using CloudFormation</b></summary>
 
 ```yaml
 AWSTemplateFormatVersion: 2010-09-09
@@ -88,6 +88,22 @@ Resources:
 * [S3 Bucket CloudFormation Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html)
 
 <br>
+</Details>
+<br>
+<Details>
+<Summary><b>Optional (Challenge Task) - Create a S3 bucket with default servers side bucket encryption using the AWS CLI</b></Summary>
 
+You will need to:
+
+* Create the bucket using **create-bucket**
+* Enable Server-side encryption using **put-bucket-encryption**
+
+<b>Resources & Links</b>
+
+* [AWS CLI Reference](https://docs.aws.amazon.com/cli/latest/reference/s3api/index.html)
+
+
+</Details>
+<br>
 
 **[Labs Home](../README.md) | [Back ..](README.md)**
