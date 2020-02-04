@@ -443,17 +443,29 @@ Remember to clean up your lab environments by deleting
 
 <br>
 
-<br>
+<Details>
+<Summary><b>Optional (Chalenge Task) - Create an RDS Aurora instance and take a snapshot backup using the AWS CLI</b></Summary>
 
-## **Resources & Links:**
+You will need to:
 
-### **Windows OS - Install MySQL Workbench**
+* Create an Aurora RDS instance using the **create-db-instance** command
+* Create a snapshot backup using the **create-db-snapshot** command
+
+<b>Resources & Links</b>
+
+* [AWS CLI Reference](https://docs.aws.amazon.com/cli/latest/reference/rds/index.html#cli-aws-rds)
+</Details>
+
+
+### **Resources & Links:**
+
+#### **Windows OS - Install MySQL Workbench**
 
 Install the MySQL Workbench client from here
 
 * https://dev.mysql.com/downloads/workbench/
 
-### **MacOS - Install MySQL Client**
+#### **MacOS - Install MySQL Client**
 
 ```bash
 brew install mysql-client
