@@ -158,7 +158,7 @@ After completing this lab, you should be familiar with the essentials of the Ama
 Let's move on to the **[next module](s3lab.md)** to look at Object Storage, i.e. S3
 
 <Details>
-<Summary><b><u>Challenge task:</u> Use a cloud formation template to attach a 100 GB EBS volume to an Amazon EC2 Linux instance.</b></summary>
+<Summary><b>Optional (Challenge task) - Use a cloud formation template to attach a 100 GB EBS volume to an Amazon EC2 Linux instance.</b></summary>
 
 Re-use or modify the cloud formation template you created during the **[EC2 Hands on Labs](../ec2lab/AdditionalConcepts.md)** to launch an **Amazon linux EC2 instance** and attach a 100GB EBS Volume.
 
@@ -198,6 +198,19 @@ Use the steps above to manually configure and mount the EBS volume
 
 </Details>
 
+<Details>
+<Summary><b>Optional (Challenge Task) - Use the AWS CLI to attach a 100GB EBS volume to an Amazon EC2 Linux instance</b></Summary>
+
+You will need to:
+
+* Launch a new Amazon Linux EC2 Instance using the **run-instances** command
+* Attach a 100GB EBS volume using the **attach-volume** command
+
+<b>Resources & Links</b>
+
+* [AWS CLI Reference](https://docs.aws.amazon.com/cli/latest/reference/ec2/index.html#cli-aws-ec2)
+
+</Details>
 <br>
 
 **[Labs Home](../README.md)**
