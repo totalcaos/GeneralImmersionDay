@@ -90,9 +90,7 @@ In the **[next module](../ec2lab/README.md)** we will deploy web servers in the 
 
 <Details>
 
-<Summary><b>Challenge Tasks</b></Summary>
-
-### **Use CloudFormation to deploy a VPC**
+<Summary><b>Optional (Challenge Task) - Use CloudFormation to deploy a VPC</b></Summary>
 
 #### **Creating the template**
 
@@ -148,9 +146,25 @@ aws cloudformation describe-stacks
 ```
 
 </Details>
+<br>
+<Details>
+<Summary><b>Optional (Challenge Task) - Create a VPC with a public subnet using the AWS CLI</b></Summary>
+
+* Use the **create-vpc** command to create the VPC
+  * Create a subnet with the **create-subnet** command
+* Use the **create-internet-gateway** command to create the IGW
+* Use the **create-route-table** command to create a route table
+  * Create a route in the route table with the **create-route** command
+* Associate the route table with the public subnet using **associate-route-table**
+
+<b>Resources & Documentation</b>
+
+* [AWS CLI Reference](https://docs.aws.amazon.com/cli/latest/reference/ec2/index.html#cli-aws-ec2)
+
+
+</Details>
 
 <br>
-
 <Details>
 <Summary><b>VPC References</b></Summary>
 <br/>
