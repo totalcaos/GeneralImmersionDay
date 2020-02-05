@@ -123,12 +123,14 @@ Now that the EC2 instance is running, lets test our access to the instance in th
 aws ec2 ...
 ```
 <br>
+
 <b>Resources & Documentation</b>
 
 * [AWS CLI Documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-instances.html)
 * [AWS CLI Configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html#cli-quick-configuration)
 
 </Details>
+
 <br>
 
 **[Labs Home](../README.md) | [Next](TestingAccess.md)**
